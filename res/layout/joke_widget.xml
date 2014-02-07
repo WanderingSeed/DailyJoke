@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/default_bg"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp" >
+
+    <LinearLayout
+        android:id="@+id/joke_animation"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:visibility="gone"
+        android:background="#80f0"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/joke_context"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="5dp"
+        android:layout_weight="14"
+        android:background="#9400"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/joke_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/remote_message"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="#300f"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</LinearLayout>

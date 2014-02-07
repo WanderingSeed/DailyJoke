@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.morgan.joke"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="15" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/joke_logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.morgan.joke.SettingActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+
+                <!-- <action android:name="android.intent.action.MAIN" /> -->
+                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name="JokeProvider"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.ACTION_APPWIDGET_DELETED" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/joke_provider" />
+        </receiver>
+
+        <service
+            android:name=".UpdateJokeService"
+            android:enabled="true" />
+
+        <receiver android:name=".GetJokesReceiver" >
+        </receiver>
+    </application>
+
+</manifest>
