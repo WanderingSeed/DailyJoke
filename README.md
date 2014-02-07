@@ -1,0 +1,4 @@
+DailyJoke
+=========
+
+a joke widget
