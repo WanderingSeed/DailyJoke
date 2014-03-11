@@ -15,8 +15,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
+/**
+ * @author Morgan.Ji
+ *
+ */
 public class APiClient {
 
     private static final String UTF_8 = "UTF-8";
@@ -70,7 +72,7 @@ public class APiClient {
                 responseBody = httpGet.getResponseBodyAsString();
                 break;
             } catch (HttpException e) {
-                Log.e("joke","从服务器获取失败", e);
+                Logger.e("joke","从服务器获取失败", e);
                 time++;
                 if (time < RETRY_TIME) {
                     try {
@@ -82,7 +84,7 @@ public class APiClient {
                 // 发生致命的异常，可能是协议不对或者返回的内容有问题
                 responseBody = SERVER_CONNECT_ERROR;
             } catch (IOException e) {
-                Log.e("joke","从服务器获取失败", e);
+                Logger.e("joke","从服务器获取失败", e);
                 time++;
                 if (time < RETRY_TIME) {
                     try {
@@ -94,7 +96,7 @@ public class APiClient {
                 // 发生网络异常
                 responseBody = SERVER_CONNECT_ERROR;
             } catch (Exception e) {
-                Log.e("joke","从服务器获取失败", e);
+                Logger.e("joke","从服务器获取失败", e);
                 time++;
                 if (time < RETRY_TIME) {
                     try {
@@ -117,9 +119,9 @@ public class APiClient {
 
     public List<String> getJokeList()
     {
-        Log.e("joke", "开始获取笑话");
+        Logger.e("joke", "开始获取笑话");
         String response = get(Constant.RESOURCEURL);
-        Log.e("joke", "系统返回结果： " + response);
+        Logger.e("joke", "系统返回结果： " + response);
         List<String> jokes = new ArrayList<String>();
         try {
             JSONObject jsonObject = new JSONObject(response);
