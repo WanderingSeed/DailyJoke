@@ -1,42 +1,57 @@
 package com.morgan.joke;
 
+import android.app.PendingIntent;
 import android.app.Service;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.IBinder;
-import android.util.Log;
 import android.widget.RemoteViews;
 
+/**
+ * 更新Widget组件上的笑话，更新方法在onStartCommand中调用，保证每次点击按钮都有效果。
+ * 
+ * @author Morgan.Ji
+ * 
+ */
 public class UpdateJokeService extends Service {
 
     @Override
-    public void onCreate()
-    {
+    public void onCreate() {
+        Logger.e("joke", "更新笑话的service被创建");
         super.onCreate();
     }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId)
-    {
-        Log.e("joke", "更新笑话的service被启动");
+    public void onDestroy() {
+        Logger.e("joke", "更新笑话的service被销毁");
+        super.onDestroy();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        Logger.e("joke", "更新笑话的service被调用");
         update();
         return super.onStartCommand(intent, flags, startId);
     }
 
-    private void update()
-    {
+    private void update() {
         int num = JokePerference.getNextJokeNum(this);
         RemoteViews view = new RemoteViews(getPackageName(), R.layout.joke_widget);
         view.setTextViewText(R.id.joke_text, JokePerference.getJoke(this, num));
+        Intent intent = new Intent(this, UpdateJokeService.class);
+        view.setOnClickPendingIntent(R.id.nextjoke, PendingIntent.getService(this,
+                JokeProvider.UPDATE_WIDGET_REQUEST_CODE, intent, PendingIntent.FLAG_CANCEL_CURRENT));
+        intent = new Intent(this, LoadJokesService.class);
+        view.setOnClickPendingIntent(R.id.loadjoke, PendingIntent.getService(this, JokeProvider.LOAD_JOKE_REQUEST_CODE,
+                intent, PendingIntent.FLAG_CANCEL_CURRENT));
         ComponentName thisWidget = new ComponentName(this, JokeProvider.class);
         AppWidgetManager manager = AppWidgetManager.getInstance(this);
         manager.updateAppWidget(thisWidget, view);
     }
 
     @Override
-    public IBinder onBind(Intent intent)
-    {
+    public IBinder onBind(Intent intent) {
         return null;
     }
 }

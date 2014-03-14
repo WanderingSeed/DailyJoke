@@ -38,14 +38,28 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/remote_message"
         android:layout_width="match_parent"
-        android:visibility="gone"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:background="#300f"
-        android:orientation="vertical" >
-    </LinearLayout>
+        android:background="#9400"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/loadjoke"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="重新加载" />
+        <Button
+            android:id="@+id/nextjoke"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="下一个" />
+        
+    </RelativeLayout>
 
 </LinearLayout>

@@ -9,7 +9,7 @@
         android:targetSdkVersion="15" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/joke_logo"
@@ -42,8 +42,7 @@
             android:name=".UpdateJokeService"
             android:enabled="true" />
 
-        <receiver android:name=".GetJokesReceiver" >
-        </receiver>
+        <service android:name=".LoadJokesService" />
     </application>
 
 </manifest>
