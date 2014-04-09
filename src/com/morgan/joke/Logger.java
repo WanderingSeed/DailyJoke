@@ -15,23 +15,11 @@ import android.util.Log;
  */
 public class Logger {
 
-    private static boolean DEBUG = false;
+    private static boolean DEBUG = true;
     private static final int mStoreLevel = Log.VERBOSE;
     private static final String LOG_FILE_PATH = Environment.getExternalStorageDirectory().getAbsolutePath()
             + File.separator +"joke"+ File.separator + "log.txt";
     private static final String DEFAULT_TAG = "default";
-
-    static {
-        File path = new File(Environment.getExternalStorageDirectory().getAbsolutePath()
-            + File.separator +"joke");
-        if (!path.exists()) {
-            if (path.mkdir()) {
-                Log.e("joke", "cerate dir success");
-            } else {
-                Log.e("joke", "cerate dir fail");
-            }
-        }
-    }
     /**
      * 在非debug模式下存储到文件的最低等级(共六个等级从verbose到assert(2到7))
      */
@@ -109,6 +97,15 @@ public class Logger {
     }
 
     private static void writeFile(String msg) {
+        File path = new File(Environment.getExternalStorageDirectory().getAbsolutePath()
+                + File.separator +"joke");
+            if (!path.exists()) {
+                if (path.mkdir()) {
+                    Log.e("joke", "cerate dir success");
+                } else {
+                    Log.e("joke", "cerate dir fail");
+                }
+            }
         Log.e(DEFAULT_TAG, msg);
         FileUtils.writeFile(LOG_FILE_PATH, new Date().toString() + " " + msg);
     }
