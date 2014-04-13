@@ -1,4 +1,4 @@
-package com.morgan.joke;
+package com.morgan.joke.setting;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

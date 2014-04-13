@@ -1,4 +1,4 @@
-package com.morgan.joke;
+package com.morgan.joke.setting;
 
 import android.content.Context;
 import android.preference.DialogPreference;
@@ -9,11 +9,11 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
+import com.morgan.joke.Constant;
+import com.morgan.joke.R;
+
 public class TextSizePickDialog extends DialogPreference {
 
-    public static final int MAX_SIZE = 32;
-    public static final int DEFAULT_SIZE = 16;
-    public static final int MIN_SIZE = 12;
     private SeekBar mSeekBar;
     private TextView mCurrentValueView;
     private TextView mSummaryView ;
@@ -27,9 +27,9 @@ public class TextSizePickDialog extends DialogPreference {
         super.onBindDialogView(view);
         mSeekBar = (SeekBar) view.findViewById(R.id.seekBar);
         mCurrentValueView = (TextView) view.findViewById(R.id.current_text_size);
-        mSeekBar.setProgress((int) (100 * ((getPersistedInt(DEFAULT_SIZE) - MIN_SIZE) / (double) (MAX_SIZE - MIN_SIZE))));
-        mCurrentValueView.setText(String.valueOf(getPersistedInt(DEFAULT_SIZE)));
-        mCurrentValueView.setTextSize(getValue(getPersistedInt(DEFAULT_SIZE)));
+        mSeekBar.setProgress((int) (100 * ((getPersistedInt(Constant.DEFAULT_TEXT_SIZE) - Constant.MIN_TEXT_SIZE) / (double) (Constant.MAX_TEXT_SIZE - Constant.MIN_TEXT_SIZE))));
+        mCurrentValueView.setText(String.valueOf(getPersistedInt(Constant.DEFAULT_TEXT_SIZE)));
+        mCurrentValueView.setTextSize(getValue(getPersistedInt(Constant.DEFAULT_TEXT_SIZE)));
         mSeekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
             @Override
@@ -64,13 +64,13 @@ public class TextSizePickDialog extends DialogPreference {
         super.onBindView(view);
         mSummaryView = (TextView) view.findViewById(android.R.id.summary);
         mSummaryView.setVisibility(View.VISIBLE);
-        mSummaryView.setTextSize(getPersistedInt(DEFAULT_SIZE));
-        mSummaryView.setText(String.valueOf(getPersistedInt(DEFAULT_SIZE)));
+        mSummaryView.setTextSize(getPersistedInt(Constant.DEFAULT_TEXT_SIZE));
+        mSummaryView.setText(String.valueOf(getPersistedInt(Constant.DEFAULT_TEXT_SIZE)));
         mSummaryView.setMinHeight(65);
         mSummaryView.setGravity(Gravity.TOP);
     }
 
     private int getValue(int progress) {
-        return (int) (progress / 100.0 * (MAX_SIZE - MIN_SIZE) + 12);
+        return (int) (progress / 100.0 * (Constant.MAX_TEXT_SIZE - Constant.MIN_TEXT_SIZE) + 12);
     }
 }

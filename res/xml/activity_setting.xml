@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <PreferenceCategory android:title="背景" >
-        <com.morgan.joke.BgColorPickDialog
+    <PreferenceCategory android:title="@string/background" >
+        <com.morgan.joke.setting.BgColorPickDialog
             android:dialogLayout="@layout/color_preference_dialog"
             android:key="bg_color"
-            android:negativeButtonText="取消"
+            android:negativeButtonText="@string/cancel"
             android:persistent="true"
-            android:positiveButtonText="确定"
-            android:title="背景颜色" />
+            android:positiveButtonText="@string/sure"
+            android:title="@string/background_color" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="字体" >
-        <com.morgan.joke.TextColorPickDialog
+    <PreferenceCategory android:title="@string/text" >
+        <com.morgan.joke.setting.TextColorPickDialog
             android:dialogLayout="@layout/color_preference_dialog"
             android:key="text_color"
-            android:negativeButtonText="取消"
+            android:negativeButtonText="@string/cancel"
             android:persistent="true"
-            android:positiveButtonText="确定"
-            android:summary="样本"
-            android:title="字体颜色" />
+            android:positiveButtonText="@string/sure"
+            android:summary="@string/sample"
+            android:title="@string/text_color" />
 
-        <com.morgan.joke.TextSizePickDialog
+        <com.morgan.joke.setting.TextSizePickDialog
             android:dialogLayout="@layout/textsize_preference_dialog"
             android:key="text_size"
-            android:negativeButtonText="取消"
+            android:negativeButtonText="@string/cancel"
             android:persistent="true"
-            android:positiveButtonText="确定"
-            android:title="字体大小" />
+            android:positiveButtonText="@string/sure"
+            android:title="@string/text_size" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="应用" >
+    <PreferenceCategory android:title="@string/app" >
         <ListPreference
-            android:defaultValue="@string/default_load_joke_num"
+            android:defaultValue="@string/twenty"
             android:entries="@array/load_joke_num_string_array"
             android:entryValues="@array/load_joke_num_string_array"
             android:key="load_joke_number"
             android:selectable="true"
             android:summary="20"
-            android:title="默认加载笑话个数" />
+            android:title="@string/default_load_joke_number" />
         
         <Preference
             android:key="reset"
-            android:summary="恢复默认设置"
-            android:title="重置" />
+            android:summary="@string/reset_all_data"
+            android:title="@string/reset" />
     </PreferenceCategory>
 
 </PreferenceScreen>

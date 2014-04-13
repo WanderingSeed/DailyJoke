@@ -13,6 +13,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.morgan.joke.util.Logger;
+
 /**
  * @author Morgan.Ji
  * 
@@ -58,9 +60,10 @@ public class APiClient {
         return responseBody;
     }
 
-    public List<String> getJokeList() {
+    public List<String> getJokeList(int number) {
         Logger.e("joke", "开始获取笑话");
-        String response = get(Constant.RESOURCEURL);
+        //因为暂时不支持带图片的笑话顾网络请求的笑话个数要多一点
+        String response = get(Constant.RESOURCEURL + (number + 10));
         Logger.e("joke", "系统返回结果： " + response);
         List<String> jokes = new ArrayList<String>();
         try {
@@ -70,9 +73,12 @@ public class APiClient {
                 JSONObject item = itemsArray.getJSONObject(i);
                 String imageUrl = item.getJSONObject("img").getString("img_file");
                 // 暂时不支持有图片的笑话
-                if (null == imageUrl || "".equals(imageUrl.trim()) && Constant.MAX_JOKE_COUNT > jokes.size()) {
+                if (null == imageUrl || "".equals(imageUrl.trim())) {
                     String joke = item.getString("content");
                     jokes.add(joke);
+                    if (number <= jokes.size()) {
+						break;
+					}
                 }
             }
         } catch (JSONException e) {

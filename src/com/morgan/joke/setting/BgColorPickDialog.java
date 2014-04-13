@@ -1,4 +1,4 @@
-package com.morgan.joke;
+package com.morgan.joke.setting;
 
 import android.content.Context;
 import android.preference.DialogPreference;
@@ -6,13 +6,14 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 
-import com.morgan.joke.ColorPickerView.OnColorPickedListener;
+import com.morgan.joke.Constant;
+import com.morgan.joke.R;
+import com.morgan.joke.setting.ColorPickerView.OnColorPickedListener;
 
 public class BgColorPickDialog extends DialogPreference {
 
-    public static final int DEFAULT_COLOR = 0Xff000000;
     private ColorPickerView mColorPicker;
-    private int mColor = DEFAULT_COLOR;
+    private int mColor = Constant.DEFAULT_BACKGROUND_COLOR;
     private TextView mSummaryView;
 
     public BgColorPickDialog(Context context, AttributeSet attrs) {
@@ -23,7 +24,7 @@ public class BgColorPickDialog extends DialogPreference {
     protected void onBindDialogView(View view) {
         super.onBindDialogView(view);
         mColorPicker = (ColorPickerView) view.findViewById(R.id.colorPickerView);
-        mColorPicker.setInitColor(getPersistedInt(DEFAULT_COLOR));
+        mColorPicker.setInitColor(getPersistedInt(Constant.DEFAULT_BACKGROUND_COLOR));
         mColorPicker.setListener(new OnColorPickedListener() {
 
             @Override
@@ -40,7 +41,7 @@ public class BgColorPickDialog extends DialogPreference {
         mSummaryView.setVisibility(View.VISIBLE);
         mSummaryView.setWidth(40);
         mSummaryView.setHeight(40);
-        mSummaryView.setBackgroundColor(getPersistedInt(DEFAULT_COLOR));
+        mSummaryView.setBackgroundColor(getPersistedInt(Constant.DEFAULT_BACKGROUND_COLOR));
     }
 
     @Override

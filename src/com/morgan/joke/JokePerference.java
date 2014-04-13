@@ -2,6 +2,8 @@ package com.morgan.joke;
 
 import java.util.List;
 
+import com.morgan.joke.util.Logger;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +15,11 @@ import android.content.SharedPreferences;
  * 
  */
 public class JokePerference {
+
+    public static int getCurrentJokeNum(Context context) {
+        SharedPreferences pre = context.getSharedPreferences("jokes", Context.MODE_PRIVATE);
+        return pre.getInt("next_joke_num", 0);
+    }
 
     public static int getNextJokeNum(Context context) {
         SharedPreferences pre = context.getSharedPreferences("jokes", Context.MODE_PRIVATE);

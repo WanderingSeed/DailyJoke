@@ -2,6 +2,9 @@ package com.morgan.joke;
 
 import java.util.List;
 
+import com.morgan.joke.setting.SettingActivity;
+import com.morgan.joke.util.Logger;
+
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -36,14 +39,16 @@ public class LoadJokesService extends Service {
         new Thread() {
             public void run() {
                 while (true) {
-                    List<String> jokes = new APiClient().getJokeList();
+                	int number = SettingActivity.getLoadJokeNumber(LoadJokesService.this);
+                    Logger.e("joke", "准备获取笑话" + number + "个");
+                    List<String> jokes = new APiClient().getJokeList(number);
                     if (jokes.size() > 0) {
                         JokePerference.storeJokes(LoadJokesService.this, jokes);
                         stopSelf();
                         break;
                     }
                     try {
-                        Logger.e("joke", "休息1秒，准备重新获取");
+                        Logger.e("joke", "休息1秒，准备重新获取 " + number);
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();

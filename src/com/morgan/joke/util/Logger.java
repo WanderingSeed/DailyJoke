@@ -1,4 +1,4 @@
-package com.morgan.joke;
+package com.morgan.joke.util;
 
 import java.io.File;
 import java.util.Date;

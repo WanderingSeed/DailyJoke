@@ -1,57 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="10dp"
     android:layout_marginLeft="30dp"
     android:layout_marginRight="30dp"
-    android:layout_marginTop="10dp"
-    android:background="@drawable/joke_bg"
-    android:orientation="vertical" >
+    android:layout_marginTop="10dp" >
+
+    <ImageView
+        android:id="@+id/joke_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY"
+        android:src="@drawable/joke_bg" />
 
     <LinearLayout
-        android:id="@+id/joke_context"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="14"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingTop="5dp" >
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/joke_text"
+        <LinearLayout
+            android:id="@+id/joke_context"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColor="@color/joke_text_color"
-            android:text="" />
+            android:layout_height="0dp"
+            android:layout_weight="14"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:id="@+id/joke_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/loadjoke"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="20dp"
+                android:background="@drawable/refresh_btn_bg"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY" />
+
+            <ImageButton
+                android:id="@+id/nextjoke"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_margin="20dp"
+                android:background="@drawable/next_btn_bg"
+                android:contentDescription="@string/app_name" />
+        </RelativeLayout>
     </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/remote_message"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="horizontal" >
-
-        <ImageButton
-            android:id="@+id/loadjoke"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentLeft="true"
-            android:layout_margin="20dp"
-            android:background="@drawable/refresh_btn_bg"
-            android:contentDescription="@string/app_name"
-            android:scaleType="fitXY" />
-
-        <ImageButton
-            android:id="@+id/nextjoke"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:contentDescription="@string/app_name"
-            android:layout_margin="20dp"
-            android:background="@drawable/next_btn_bg" />
-    </RelativeLayout>
-
-</LinearLayout>
+</FrameLayout>

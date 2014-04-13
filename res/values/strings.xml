@@ -2,6 +2,20 @@
 <resources>
 
     <string name="app_name">每日一笑</string>
-    <string name="action_settings">设置</string>
-    <string name="default_load_joke_num">20</string>
+    <string name="twenty">20</string>
+    <string name="another_click_exit_app">再按一次退出设置</string>
+    <string name="are_you_sure_reset">确认恢复默认设置吗？</string>
+    <string name="tip">提示</string>
+    <string name="sure">确定</string>
+    <string name="cancel">取消</string>
+    <string name="app">应用</string>
+    <string name="background">背景</string>
+    <string name="background_color">背景颜色</string>
+    <string name="text">字体</string>
+    <string name="text_size">字体大小</string>
+    <string name="text_color">字体颜色</string>
+    <string name="default_load_joke_number">默认加载笑话个数</string>
+    <string name="reset">重置</string>
+    <string name="sample">样本</string>
+    <string name="reset_all_data">恢复默认设置</string>
 </resources>
