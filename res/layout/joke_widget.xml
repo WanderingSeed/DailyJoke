@@ -54,12 +54,23 @@
                 android:scaleType="fitXY" />
 
             <ImageButton
+                android:id="@+id/nextPage"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="25dp"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone"
+                android:background="@drawable/next_page_btn_bg"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitXY" />
+
+            <ImageButton
                 android:id="@+id/nextjoke"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentRight="true"
                 android:layout_margin="20dp"
-                android:background="@drawable/next_btn_bg"
+                android:background="@drawable/next_joke_btn_bg"
                 android:contentDescription="@string/app_name" />
         </RelativeLayout>
     </LinearLayout>

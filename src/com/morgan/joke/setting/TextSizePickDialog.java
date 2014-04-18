@@ -9,14 +9,14 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-import com.morgan.joke.Constant;
 import com.morgan.joke.R;
+import com.morgan.joke.data.Constant;
 
 public class TextSizePickDialog extends DialogPreference {
 
     private SeekBar mSeekBar;
     private TextView mCurrentValueView;
-    private TextView mSummaryView ;
+    private TextView mSummaryView;
 
     public TextSizePickDialog(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -71,6 +71,6 @@ public class TextSizePickDialog extends DialogPreference {
     }
 
     private int getValue(int progress) {
-        return (int) (progress / 100.0 * (Constant.MAX_TEXT_SIZE - Constant.MIN_TEXT_SIZE) + 12);
+        return (int) (progress / 100.0 * (Constant.MAX_TEXT_SIZE - Constant.MIN_TEXT_SIZE) + Constant.MIN_TEXT_SIZE);
     }
 }

@@ -6,8 +6,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 
-import com.morgan.joke.Constant;
 import com.morgan.joke.R;
+import com.morgan.joke.data.Constant;
 import com.morgan.joke.setting.ColorPickerView.OnColorPickedListener;
 
 public class TextColorPickDialog extends DialogPreference {

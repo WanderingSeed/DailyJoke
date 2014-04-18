@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="black">#000</color>
+    <color name="white">#fff</color>
+    <color name="dialog_bg_color">#eee</color>
+    <color name="confirm_btn_normal_color">#37bc9b</color>
+    <color name="confirm_btn_pressed_color">#26836c</color>
+    <color name="dialog_text_color">#666</color>
+    <color name="copyright_text_color">#9666</color>
+
 </resources>

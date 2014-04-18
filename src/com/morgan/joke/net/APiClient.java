@@ -1,4 +1,4 @@
-package com.morgan.joke;
+package com.morgan.joke.net;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.morgan.joke.data.Constant;
 import com.morgan.joke.util.Logger;
 
 /**
@@ -62,7 +63,7 @@ public class APiClient {
 
     public List<String> getJokeList(int number) {
         Logger.e("joke", "开始获取笑话");
-        //因为暂时不支持带图片的笑话顾网络请求的笑话个数要多一点
+        // 因为暂时不支持带图片的笑话顾网络请求的笑话个数要多一点
         String response = get(Constant.RESOURCEURL + (number + 10));
         Logger.e("joke", "系统返回结果： " + response);
         List<String> jokes = new ArrayList<String>();
@@ -77,8 +78,8 @@ public class APiClient {
                     String joke = item.getString("content");
                     jokes.add(joke);
                     if (number <= jokes.size()) {
-						break;
-					}
+                        break;
+                    }
                 }
             }
         } catch (JSONException e) {

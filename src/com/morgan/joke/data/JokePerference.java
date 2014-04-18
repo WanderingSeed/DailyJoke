@@ -1,12 +1,11 @@
-package com.morgan.joke;
+package com.morgan.joke.data;
 
 import java.util.List;
 
-import com.morgan.joke.util.Logger;
-
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
+
+import com.morgan.joke.util.Logger;
 
 /**
  * 用于存储和获取存储区的笑话。
@@ -18,20 +17,24 @@ public class JokePerference {
 
     public static int getCurrentJokeNum(Context context) {
         SharedPreferences pre = context.getSharedPreferences("jokes", Context.MODE_PRIVATE);
-        return pre.getInt("next_joke_num", 0);
+        return pre.getInt("current_joke_num", 0);
+    }
+
+    public static int getTotalJokeNum(Context context) {
+        SharedPreferences pre = context.getSharedPreferences("jokes", Context.MODE_PRIVATE);
+        return pre.getInt("total_joke_num", 0);
     }
 
     public static int getNextJokeNum(Context context) {
         SharedPreferences pre = context.getSharedPreferences("jokes", Context.MODE_PRIVATE);
-        int num = pre.getInt("next_joke_num", 0);
-        SharedPreferences.Editor editor = pre.edit();
+        int num = pre.getInt("current_joke_num", 0);
         int totalnum = pre.getInt("total_joke_num", 0);
+        num++;
         if (num >= totalnum) {
             num = 0;
-            // 循环了一圈了，该重新获取了（这是获取笑话的另外一种驱动方式）
-            context.startService(new Intent(context, LoadJokesService.class));
         }
-        editor.putInt("next_joke_num", num + 1);
+        SharedPreferences.Editor editor = pre.edit();
+        editor.putInt("current_joke_num", num);
         editor.commit();
         return num;
     }
@@ -54,9 +57,8 @@ public class JokePerference {
             editor.remove("joke_" + i);
         }
         editor.putInt("total_joke_num", jokes.size());
-        editor.putInt("next_joke_num", 0);
+        editor.putInt("current_joke_num", 0);
         editor.commit();
-        context.startService(new Intent(context, UpdateJokeService.class));
     }
 
 }

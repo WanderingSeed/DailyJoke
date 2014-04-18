@@ -23,7 +23,7 @@ public class ColorPickerView extends View {
     public interface OnColorPickedListener {
         void onColorChange(int color);
     }
-    
+
     public ColorPickerView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();

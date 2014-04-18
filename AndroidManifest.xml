@@ -38,10 +38,10 @@
         </receiver>
 
         <service
-            android:name=".UpdateJokeService"
+            android:name="com.morgan.joke.service.UpdateJokeService"
             android:enabled="true" />
 
-        <service android:name=".LoadJokesService" />
+        <service android:name="com.morgan.joke.service.LoadJokesService" />
     </application>
 
 </manifest>
