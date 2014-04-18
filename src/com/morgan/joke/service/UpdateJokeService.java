@@ -10,8 +10,6 @@ import android.widget.RemoteViews;
 
 import com.morgan.joke.JokeProvider;
 import com.morgan.joke.R;
-import com.morgan.joke.R.id;
-import com.morgan.joke.R.layout;
 import com.morgan.joke.data.JokePerference;
 import com.morgan.joke.setting.SettingActivity;
 import com.morgan.joke.util.ImageUtils;

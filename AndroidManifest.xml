@@ -37,10 +37,6 @@
                 android:resource="@xml/joke_provider" />
         </receiver>
 
-        <service
-            android:name="com.morgan.joke.service.UpdateJokeService"
-            android:enabled="true" />
-
         <service android:name="com.morgan.joke.service.LoadJokesService" />
     </application>
 

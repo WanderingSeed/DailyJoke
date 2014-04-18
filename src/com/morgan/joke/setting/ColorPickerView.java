@@ -13,6 +13,12 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+/**
+ * 自定义颜色选择器
+ * 
+ * @author Morgan.Ji
+ * 
+ */
 public class ColorPickerView extends View {
 
     private Paint mPaint;

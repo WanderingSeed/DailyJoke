@@ -7,6 +7,12 @@ import java.io.PrintWriter;
 
 import android.util.Log;
 
+/**
+ * 一些文件读写的使用方法
+ * 
+ * @author Morgan.Ji
+ * 
+ */
 public class FileUtils {
     private static final String TAG = FileUtils.class.getName();
 

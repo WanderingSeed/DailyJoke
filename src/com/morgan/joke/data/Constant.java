@@ -1,6 +1,8 @@
 package com.morgan.joke.data;
 
 /**
+ * 用于存放一些默认值和常量
+ * 
  * @author Morgan.Ji
  * 
  */

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/dialog_bg"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/building_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="@string/about"
+        android:textColor="@color/black"
+        android:textSize="@dimen/title_text_size" />
+
+    <TextView
+        android:id="@+id/building_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingBottom="2dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="    这是一款小工具，添加方法取决于手机中小工具的添加方法，比如在手机屏幕空白区域长按屏幕->添加小工具->每日一笑。如有任何意见直接联系作者。\n邮箱：714758359@qq.com"
+        android:textColor="@color/dialog_text_color"
+        android:textSize="@dimen/normal_text_size" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textColor="@color/copyright_text_color"
+        android:textSize="@dimen/small_text_size"
+        android:text="Copyright 2014 by Morgan.Ji" />
+
+    <TextView
+        android:id="@+id/confirm_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/confirm_btn_bg"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/sure"
+        android:textColor="@color/white"
+        android:textSize="@dimen/normal_text_size" />
+
+</LinearLayout>

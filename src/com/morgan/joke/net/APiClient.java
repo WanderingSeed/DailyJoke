@@ -17,6 +17,8 @@ import com.morgan.joke.data.Constant;
 import com.morgan.joke.util.Logger;
 
 /**
+ * 发送网络请求的客户端
+ * 
  * @author Morgan.Ji
  * 
  */

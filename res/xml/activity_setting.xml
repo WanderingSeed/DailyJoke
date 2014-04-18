@@ -3,7 +3,7 @@
 
     <PreferenceCategory android:title="@string/background" >
         <com.morgan.joke.setting.BgColorPickDialog
-            android:dialogLayout="@layout/color_preference_dialog"
+            android:dialogLayout="@layout/dialog_color_preference"
             android:key="bg_color"
             android:negativeButtonText="@string/cancel"
             android:persistent="true"
@@ -12,7 +12,7 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/text" >
         <com.morgan.joke.setting.TextColorPickDialog
-            android:dialogLayout="@layout/color_preference_dialog"
+            android:dialogLayout="@layout/dialog_color_preference"
             android:key="text_color"
             android:negativeButtonText="@string/cancel"
             android:persistent="true"
@@ -21,7 +21,7 @@
             android:title="@string/text_color" />
 
         <com.morgan.joke.setting.TextSizePickDialog
-            android:dialogLayout="@layout/textsize_preference_dialog"
+            android:dialogLayout="@layout/dialog_textsize_preference"
             android:key="text_size"
             android:negativeButtonText="@string/cancel"
             android:persistent="true"
@@ -39,7 +39,7 @@
             android:title="@string/default_load_joke_number" />
 
         <com.morgan.joke.setting.PageSizeSetDialog
-            android:dialogLayout="@layout/pagesize_preference_dialog"
+            android:dialogLayout="@layout/dialog_pagesize_preference"
             android:key="page_size"
             android:negativeButtonText="@string/cancel"
             android:persistent="true"
