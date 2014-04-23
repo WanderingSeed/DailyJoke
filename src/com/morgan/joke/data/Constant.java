@@ -14,7 +14,7 @@ public class Constant {
     public static final int MAX_TEXT_SIZE = 24;
     public static final int MIN_TEXT_SIZE = 14;
     // 默认翻页跳过的字数
-    public static final int DEFAULT_PAGE_SIZE = 140;
+    public static final int DEFAULT_PAGE_SIZE = 150;
     public static final int MIN_PAGE_SIZE = 60;
     public static final int MAX_PAGE_SIZE = 200;
     public static final int DEFAULT_TEXT_COLOR = 0Xff000000;

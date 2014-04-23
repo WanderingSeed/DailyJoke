@@ -8,6 +8,7 @@
     <string name="sixty">40</string>
     <string name="two_hundred">200</string>
     <string name="one_hundred_fourty">140</string>
+    <string name="loading_joke_now">正在加载笑话&#8230;</string>
     <string name="another_click_exit_app">再按一次退出设置</string>
     <string name="are_you_sure_reset">确认恢复默认设置吗？</string>
     <string name="tip">提示</string>
@@ -26,4 +27,6 @@
     <string name="current_value">当前值：</string>
     <string name="reset_all_data">恢复默认设置</string>
     <string name="about">关于</string>
+    <string name="copyright">Copyright 2014 by Morgan.Ji</string>
+    <string name="about_content">    这是一款小工具，添加方法取决于手机中小工具的添加方法，比如在手机屏幕空白区域长按屏幕->添加小工具->每日一笑。如发现任何问题可直接联系作者。\n邮箱：714758359@qq.com</string>
 </resources>

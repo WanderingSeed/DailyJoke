@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.morgan.joke.R;
 import com.morgan.joke.util.Logger;
 
 /**
@@ -14,6 +15,18 @@ import com.morgan.joke.util.Logger;
  * 
  */
 public class JokePerference {
+
+    public static boolean isFirstTime(Context context) {
+        SharedPreferences pre = context.getSharedPreferences("jokes", Context.MODE_PRIVATE);
+        return pre.getBoolean("first_use", true);
+    }
+    
+    public static void setFirstTime(Context context, boolean value) {
+        SharedPreferences pre = context.getSharedPreferences("jokes", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pre.edit();
+        editor.putBoolean("first_use", value);
+        editor.commit();
+    }
 
     public static int getCurrentJokeNum(Context context) {
         SharedPreferences pre = context.getSharedPreferences("jokes", Context.MODE_PRIVATE);
@@ -42,7 +55,7 @@ public class JokePerference {
     public static String getJoke(Context context, int num) {
         Logger.e("joke", "显示第" + num + "个笑话");
         SharedPreferences pre = context.getSharedPreferences("jokes", Context.MODE_PRIVATE);
-        return pre.getString("joke_" + num, "暂无笑话");
+        return pre.getString("joke_" + num, context.getString(R.string.loading_joke_now));
     }
 
     public static void storeJokes(Context context, List<String> jokes) {

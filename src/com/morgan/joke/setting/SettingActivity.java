@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.morgan.joke.JokeProvider;
 import com.morgan.joke.R;
 import com.morgan.joke.data.Constant;
+import com.morgan.joke.data.JokePerference;
 
 /**
  * 用于设置关于笑话组件的一些可设置元素。
@@ -38,6 +39,10 @@ public class SettingActivity extends PreferenceActivity implements OnSharedPrefe
         addPreferencesFromResource(R.xml.activity_setting);
         getPreferenceScreen().getSharedPreferences().registerOnSharedPreferenceChangeListener(this);
         updateUI();
+        if (JokePerference.isFirstTime(this)) {
+            new AboutDialog(this).show();
+            JokePerference.setFirstTime(this, false);
+        }
     }
 
     private void updateUI() {

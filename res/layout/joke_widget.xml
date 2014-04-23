@@ -34,7 +34,9 @@
                 android:id="@+id/joke_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="" />
+                android:textColor="@color/black"
+                android:textSize="@dimen/normal_text_size"
+                android:text="@string/loading_joke_now" />
         </LinearLayout>
 
         <RelativeLayout

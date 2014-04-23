@@ -26,6 +26,7 @@ public class JokeProvider extends AppWidgetProvider {
     public static final String ACTION_NEXT_JOKE = "nextJoke";
     public static final String ACTION_NEXT_PAGE = "nextPage";
     public static final String PAGE_NUMBER = "pageNumber";
+    public static final int NO_NEXT_PAGE = -1;
     public static final int LOAD_JOKE_REQUEST_CODE = 2;
     public static final int NEXT_JOKE_REQUEST_CODE = 3;
     public static final int NEXT_PAGE_REQUEST_CODE = 4;
@@ -46,17 +47,28 @@ public class JokeProvider extends AppWidgetProvider {
                     context.startService(loadIntent);
                 }
                 String joke = JokePerference.getJoke(context, num);
-                updateJoke(context, appWidgetId, joke, 0);
+                int nextPageNum = NO_NEXT_PAGE;
+                if (joke.length() > SettingActivity.getPageSize(context)) {
+                    joke = joke.substring(0, SettingActivity.getPageSize(context));
+                    nextPageNum = 1;
+                }
+                updateJoke(context, appWidgetId, joke, nextPageNum);
             }
         } else if (ACTION_NEXT_PAGE.equals(action)) {
             if (null != extras) {
                 int appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID,
                         AppWidgetManager.INVALID_APPWIDGET_ID);
-                int pageNum = extras.getInt(PAGE_NUMBER, 1);
-                int num = JokePerference.getCurrentJokeNum(context);
-                String joke = JokePerference.getJoke(context, num);
-                if (joke.length() > pageNum * SettingActivity.getPageSize(context)) {
-                    updateJoke(context, appWidgetId, joke.substring(pageNum * SettingActivity.getPageSize(context)), pageNum);
+                int pageNum = extras.getInt(PAGE_NUMBER, NO_NEXT_PAGE);
+                if (pageNum != NO_NEXT_PAGE) {
+                    int num = JokePerference.getCurrentJokeNum(context);
+                    String joke = JokePerference.getJoke(context, num);
+                    joke = joke.substring(pageNum * SettingActivity.getPageSize(context));
+                    int nextPageNum = NO_NEXT_PAGE;
+                    if (joke.length() > SettingActivity.getPageSize(context)) {
+                        joke = joke.substring(0, SettingActivity.getPageSize(context));
+                        nextPageNum = pageNum + 1;
+                    }
+                    updateJoke(context, appWidgetId, joke, nextPageNum);
                 }
             }
         } else {
@@ -80,13 +92,18 @@ public class JokeProvider extends AppWidgetProvider {
         } else {
             int num = JokePerference.getCurrentJokeNum(context);
             String joke = JokePerference.getJoke(context, num);
+            int nextPageNum = NO_NEXT_PAGE;
+            if (joke.length() > SettingActivity.getPageSize(context)) {
+                joke = joke.substring(0, SettingActivity.getPageSize(context));
+                nextPageNum = 1;
+            }
             for (int i = 0; i < appWidgetIds.length; i++) {
-                updateJoke(context, appWidgetIds[i], joke, 0);
+                updateJoke(context, appWidgetIds[i], joke, nextPageNum);
             }
         }
     }
 
-    private void updateJoke(Context context, int appWidgetId, String joke, int pageNum) {
+    private void updateJoke(Context context, int appWidgetId, String joke, int nextPageNum) {
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.joke_widget);
         views.setTextViewText(R.id.joke_text, joke);
@@ -99,10 +116,10 @@ public class JokeProvider extends AppWidgetProvider {
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
         views.setOnClickPendingIntent(R.id.nextjoke,
                 PendingIntent.getBroadcast(context, NEXT_JOKE_REQUEST_CODE, intent, PendingIntent.FLAG_CANCEL_CURRENT));
-        if (joke.length() > SettingActivity.getPageSize(context)) {
+        if (nextPageNum != NO_NEXT_PAGE) {
             intent = new Intent(context, JokeProvider.class);
             intent.setAction(ACTION_NEXT_PAGE);
-            intent.putExtra(PAGE_NUMBER, pageNum + 1);
+            intent.putExtra(PAGE_NUMBER, nextPageNum);
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
             views.setViewVisibility(R.id.nextPage, View.VISIBLE);
             views.setOnClickPendingIntent(R.id.nextPage, PendingIntent.getBroadcast(context, NEXT_PAGE_REQUEST_CODE,

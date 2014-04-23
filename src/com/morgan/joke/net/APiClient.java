@@ -78,6 +78,11 @@ public class APiClient {
                 // 暂时不支持有图片的笑话
                 if (null == imageUrl || "".equals(imageUrl.trim())) {
                     String joke = item.getString("content");
+                    //删除空格换行等
+                    joke = joke.replace(" ", "");
+                    joke = joke.replace("\n", "");
+                    joke = joke.replace("\r", "");
+                    joke = joke.replace("\t", "");
                     jokes.add(joke);
                     if (number <= jokes.size()) {
                         break;
